@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technical Portfolio | Auto Parts Platforms</title>
+  <style>
+    :root {
+      --bg: #f4efe7;
+      --panel: rgba(255, 252, 247, 0.84);
+      --ink: #18222f;
+      --muted: #556273;
+      --line: rgba(24, 34, 47, 0.12);
+      --accent: #0d6b66;
+      --accent-soft: #d5efe8;
+      --warm: #c76d3a;
+      --shadow: 0 22px 60px rgba(21, 31, 43, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(199, 109, 58, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(13, 107, 102, 0.18), transparent 24%),
+        linear-gradient(180deg, #fcf8f1 0%, var(--bg) 100%);
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 24px));
+      margin: 0 auto;
+      padding: 20px 0 34px;
+    }
+
+    .hero,
+    .panel {
+      backdrop-filter: blur(12px);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 28px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -70px -70px auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(13, 107, 102, 0.28), rgba(199, 109, 58, 0.16));
+      filter: blur(6px);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.05;
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 4vw, 3.6rem);
+      margin-top: 14px;
+      max-width: none;
+    }
+
+    .lede {
+      max-width: 760px;
+      margin: 12px 0 0;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .meta-grid,
+    .projects {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .meta-grid {
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .meta-card {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.58);
+      border: 1px solid rgba(24, 34, 47, 0.08);
+      font-size: 0.94rem;
+      line-height: 1.5;
+    }
+
+    .meta-card strong {
+      display: block;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 8px;
+    }
+
+    .projects {
+      grid-template-columns: 1fr;
+      margin-top: 18px;
+    }
+
+    .panel {
+      padding: 22px;
+    }
+
+    .project-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm);
+    }
+
+    .project-kicker::before {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: rgba(199, 109, 58, 0.45);
+    }
+
+    .project-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .project-head p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      max-width: 72ch;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 12px 0 16px;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      background: rgba(13, 107, 102, 0.08);
+      border: 1px solid rgba(13, 107, 102, 0.14);
+      color: var(--accent);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin: 10px 0 12px;
+    }
+
+    .info-box {
+      padding: 12px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(245, 250, 249, 0.92));
+      border: 1px solid rgba(24, 34, 47, 0.08);
+    }
+
+    .info-box strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--warm);
+    }
+
+    .info-box span {
+      display: block;
+      color: var(--ink);
+      font-size: 0.94rem;
+      line-height: 1.45;
+      font-weight: 600;
+    }
+
+    ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        width: min(100% - 20px, 1120px);
+        padding-top: 16px;
+      }
+
+      .hero,
+      .panel {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <span class="eyebrow">Carp Valentin</span>
+      <h1>Web developer building business-focused platforms.</h1>
+      <p class="lede">
+        I build web applications for marketplace operations, seller workflows, warehouse processes, integrations,
+        and internal business tools. These projects show the kind of platforms I have worked on across backend,
+        frontend, and product-facing technical architecture.
+      </p>
+
+      <div class="meta-grid">
+        <div class="meta-card">
+          <strong>Role</strong>
+          Web developer
+        </div>
+        <div class="meta-card">
+          <strong>Core Focus</strong>
+          Marketplace + operations
+        </div>
+        <div class="meta-card">
+          <strong>Main Stack</strong>
+          PHP, Laravel, Next.js
+        </div>
+        <div class="meta-card">
+          <strong>Project Domain</strong>
+          Auto parts / business tools
+        </div>
+      </div>
+    </section>
+
+    <section class="projects">
+      <article class="panel">
+        <div class="project-kicker">Project 01</div>
+        <div class="project-head">
+          <div>
+            <h2>Nexus Platform</h2>
+            <p>
+              Full-stack operations platform for catalog, warehouse, vehicle, order, return, and channel-management workflows.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-box">
+            <strong>Role</strong>
+            <span>Backend API, admin tooling, frontend dashboard</span>
+          </div>
+          <div class="info-box">
+            <strong>Stack</strong>
+            <span>Laravel 12, Next.js 16, React 19, MariaDB</span>
+          </div>
+          <div class="info-box">
+            <strong>Use Case</strong>
+            <span>Internal operations hub for marketplace teams</span>
+          </div>
+        </div>
+
+        <div class="tag-list">
+          <span class="tag">Laravel 12</span>
+          <span class="tag">PHP 8.3</span>
+          <span class="tag">Next.js 16</span>
+          <span class="tag">React 19</span>
+          <span class="tag">MariaDB 11.4</span>
+          <span class="tag">Filament</span>
+          <span class="tag">Docker Compose</span>
+          <span class="tag">Nginx Proxy</span>
+          <span class="tag">Mailhog</span>
+        </div>
+
+        <ul>
+          <li>Built around Laravel APIs, Filament admin resources, and a Next.js dashboard with localized routing.</li>
+          <li>Covered products, categories, warehouses, vehicles, orders, invoices, returns, subscriptions, and feature flags.</li>
+          <li>Connected marketplace channels such as OLX, eBay, Ovoko, and Pieseauto in a Dockerized multi-service setup.</li>
+        </ul>
+      </article>
+
+      <article class="panel">
+        <div class="project-kicker">Project 02</div>
+        <div class="project-head">
+          <div>
+            <h2>CodeIgniter Marketplace</h2>
+            <p>
+              Marketplace application combining storefront, seller operations, checkout, messaging, and admin flows in one system.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-box">
+            <strong>Role</strong>
+            <span>Full marketplace application and integrations</span>
+          </div>
+          <div class="info-box">
+            <strong>Stack</strong>
+            <span>CodeIgniter 4, PHP 8.3, Apache, MariaDB</span>
+          </div>
+          <div class="info-box">
+            <strong>Use Case</strong>
+            <span>Public marketplace plus seller workspace</span>
+          </div>
+        </div>
+
+        <div class="tag-list">
+          <span class="tag">CodeIgniter 4</span>
+          <span class="tag">PHP 8.3</span>
+          <span class="tag">Apache</span>
+          <span class="tag">MariaDB</span>
+          <span class="tag">Docker Compose</span>
+          <span class="tag">JWT</span>
+          <span class="tag">Stripe</span>
+          <span class="tag">Guzzle</span>
+          <span class="tag">ionCube</span>
+        </div>
+
+        <ul>
+          <li>Includes public browsing, seller dashboards, carts, checkout, order lifecycles, and internal messaging.</li>
+          <li>Runs in Docker with Apache, Mailhog, Stripe flows, JWT usage, and bridges to external systems.</li>
+          <li>Mixes CodeIgniter with Illuminate components and legacy-compatible runtime choices such as ionCube.</li>
+        </ul>
+      </article>
+
+      <article class="panel">
+        <div class="project-kicker">Project 03</div>
+        <div class="project-head">
+          <div>
+            <h2>PartsLinker Operations Platform</h2>
+            <p>
+              Custom operations platform for dismantlers and used-parts sellers, centered on stock, donor vehicles,
+              warehouse activity, order intake, and channel synchronization.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-box">
+            <strong>Role</strong>
+            <span>Multi-tenant seller and admin platform</span>
+          </div>
+          <div class="info-box">
+            <strong>Stack</strong>
+            <span>Custom PHP, Twig, MySQL / MariaDB, jQuery</span>
+          </div>
+          <div class="info-box">
+            <strong>Use Case</strong>
+            <span>Operations system for dismantlers</span>
+          </div>
+        </div>
+
+        <div class="tag-list">
+          <span class="tag">Custom PHP</span>
+          <span class="tag">OpenCart-style MVC</span>
+          <span class="tag">Twig</span>
+          <span class="tag">MySQL / MariaDB</span>
+          <span class="tag">jQuery</span>
+          <span class="tag">Chart.js</span>
+          <span class="tag">Stripe</span>
+          <span class="tag">AWS SDK</span>
+          <span class="tag">PhpSpreadsheet</span>
+        </div>
+
+        <ul>
+          <li>Built on a heavily customized OpenCart-style MVC core with server-rendered Twig templates and route-based permissions.</li>
+          <li>Supports inventory, donor vehicles, warehouse labels, imported orders, invoices, subscriptions, support, and partner/mobile APIs.</li>
+          <li>Includes AI-assisted product drafting, background removal, feed exports, and a large codebase footprint with hundreds of routes and templates.</li>
+        </ul>
+      </article>
+    </section>
+
+    <footer>
+      Carp Valentin • Web Developer
+    </footer>
+  </main>
+</body>
+</html>
