@@ -167,6 +167,62 @@
       max-width: 72ch;
     }
 
+    .media-frame {
+      position: relative;
+      margin: 14px 0 12px;
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      border: 1px solid rgba(24, 34, 47, 0.08);
+      background: linear-gradient(135deg, rgba(13, 107, 102, 0.08), rgba(199, 109, 58, 0.08));
+    }
+
+    .media-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      background: #f2ede5;
+    }
+
+    .media-placeholder {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 6px;
+      padding: 18px;
+      text-align: center;
+      color: var(--muted);
+      background:
+        linear-gradient(135deg, rgba(13, 107, 102, 0.1), rgba(199, 109, 58, 0.1)),
+        rgba(255, 252, 247, 0.9);
+    }
+
+    .media-placeholder strong {
+      color: var(--ink);
+      font-size: 0.96rem;
+    }
+
+    .media-placeholder code {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(24, 34, 47, 0.08);
+      font-size: 0.82rem;
+      color: var(--accent);
+    }
+
+    .media-frame.is-missing .media-img {
+      display: none;
+    }
+
+    .media-frame.is-missing .media-placeholder {
+      display: flex;
+    }
+
     .tag-list {
       display: flex;
       flex-wrap: wrap;
@@ -286,6 +342,15 @@
           </div>
         </div>
 
+        <div class="media-frame">
+          <img class="media-img" src="img/nexus-platform.jpg" alt="Nexus Platform preview" loading="lazy">
+          <div class="media-placeholder">
+            <strong>Add a Nexus screenshot</strong>
+            <span>Recommended: dashboard or operations view</span>
+            <code>img/nexus-platform.jpg</code>
+          </div>
+        </div>
+
         <div class="info-grid">
           <div class="info-box">
             <strong>Role</strong>
@@ -328,6 +393,15 @@
             <p>
               Marketplace application combining storefront, seller operations, checkout, messaging, and admin flows in one system.
             </p>
+          </div>
+        </div>
+
+        <div class="media-frame">
+          <img class="media-img" src="img/codeigniter-marketplace.jpg" alt="CodeIgniter Marketplace preview" loading="lazy">
+          <div class="media-placeholder">
+            <strong>Add a marketplace screenshot</strong>
+            <span>Recommended: storefront, seller view, or checkout</span>
+            <code>img/codeigniter-marketplace.jpg</code>
           </div>
         </div>
 
@@ -377,6 +451,15 @@
           </div>
         </div>
 
+        <div class="media-frame">
+          <img class="media-img" src="img/partslinker-operations.jpg" alt="PartsLinker Operations Platform preview" loading="lazy">
+          <div class="media-placeholder">
+            <strong>Add a PartsLinker screenshot</strong>
+            <span>Recommended: warehouse, donor vehicle, or invoice view</span>
+            <code>img/partslinker-operations.jpg</code>
+          </div>
+        </div>
+
         <div class="info-grid">
           <div class="info-box">
             <strong>Role</strong>
@@ -416,5 +499,19 @@
       Carp Valentin • Web Developer
     </footer>
   </main>
+  <script>
+    document.querySelectorAll('.media-frame').forEach((frame) => {
+      const img = frame.querySelector('.media-img');
+      if (!img) return;
+
+      const markMissing = () => frame.classList.add('is-missing');
+
+      img.addEventListener('error', markMissing);
+
+      if (img.complete && img.naturalWidth === 0) {
+        markMissing();
+      }
+    });
+  </script>
 </body>
 </html>
