@@ -278,6 +278,32 @@
       font-size: 0.95rem;
     }
 
+    .extras {
+      margin-top: 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .extras-head {
+      padding: 20px 22px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255, 252, 247, 0.72);
+      box-shadow: var(--shadow);
+    }
+
+    .extras-head p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .extras-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 14px;
+    }
+
     footer {
       margin-top: 16px;
       color: var(--muted);
@@ -493,6 +519,71 @@
           <li>Includes AI-assisted product drafting, background removal, feed exports, and a large codebase footprint with hundreds of routes and templates.</li>
         </ul>
       </article>
+    </section>
+
+    <section class="extras">
+      <div class="extras-head">
+        <h2>Additional Personal Projects</h2>
+        <p>Two smaller projects that show early product building work outside the main marketplace platforms.</p>
+      </div>
+
+      <div class="extras-grid">
+        <article class="panel">
+          <div class="project-kicker">Personal Project</div>
+          <div class="project-head">
+            <div>
+              <h2>Fitness Calorie Tracking App</h2>
+              <p>
+                Bachelor degree project built in Flutter to help users monitor calories, track daily activity, and keep
+                a simple overview of personal fitness progress.
+              </p>
+            </div>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-box">
+              <strong>Type</strong>
+              <span>Mobile app project</span>
+            </div>
+            <div class="info-box">
+              <strong>Stack</strong>
+              <span>Flutter</span>
+            </div>
+            <div class="info-box">
+              <strong>Focus</strong>
+              <span>Calories and user progress tracking</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="project-kicker">Personal Project</div>
+          <div class="project-head">
+            <div>
+              <h2>Minimal Shop Application</h2>
+              <p>
+                Learning project made with vanilla PHP and vanilla JavaScript, without frameworks, to understand the
+                basics of web development through a small minimalist shop application.
+              </p>
+            </div>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-box">
+              <strong>Type</strong>
+              <span>Learning project</span>
+            </div>
+            <div class="info-box">
+              <strong>Stack</strong>
+              <span>Vanilla PHP, JavaScript, HTML, CSS</span>
+            </div>
+            <div class="info-box">
+              <strong>Focus</strong>
+              <span>Core web development fundamentals</span>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
 
     <footer>
