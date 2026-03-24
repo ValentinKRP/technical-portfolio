@@ -180,7 +180,8 @@
     .media-img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: center;
       display: block;
       background: #f2ede5;
     }
@@ -233,7 +234,9 @@
       overflow: hidden;
       aspect-ratio: 16 / 9;
       border: 1px solid rgba(24, 34, 47, 0.08);
-      background: linear-gradient(135deg, rgba(13, 107, 102, 0.08), rgba(199, 109, 58, 0.08));
+      background:
+        linear-gradient(135deg, rgba(13, 107, 102, 0.08), rgba(199, 109, 58, 0.08)),
+        #f4efe7;
     }
 
     .slider-slide {
@@ -252,8 +255,10 @@
     .slider-slide img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: center;
       display: block;
+      background: #f4efe7;
     }
 
     .slider-control {
@@ -307,8 +312,10 @@
     .slider-thumb img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: center;
       display: block;
+      background: #f4efe7;
     }
 
     .tag-list {
